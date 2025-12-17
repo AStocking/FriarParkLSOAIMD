@@ -28,25 +28,44 @@
             height: 100vh; /* full viewport height */
             gap: 10px;
             padding: 10px;
+            box-sizing: border-box;
         }
 
+        /* Map takes 2/3 of width */
         #map {
-            flex: 2;           /* map takes ~2/3 of width */
+            flex: 2;
             min-width: 600px;
             height: 100%;
         }
 
+        /* Image container takes 1/3 */
         .side-image {
-            flex: 1;           /* image takes ~1/3 of width */
+            flex: 1;
             overflow-y: auto;  /* scroll if image is tall */
             height: 100%;
             border: 1px solid #ccc;
             padding: 5px;
+            background-color: #f8f8f8;
         }
 
         .side-image img {
             width: 100%;
             height: auto;
+            display: block;
+        }
+
+        /* Popup styling */
+        .ol-popup {
+            background-color: white;
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .ol-popup-closer {
+            text-decoration: none;
+            position: absolute;
+            top: 2px;
+            right: 8px;
         }
     </style>
 
@@ -54,7 +73,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- Map -->
+        <!-- OpenLayers Map -->
         <div id="map">
             <div id="popup" class="ol-popup">
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
@@ -62,10 +81,9 @@
             </div>
         </div>
 
-        <!-- Static Image -->
+        <!-- Static Image Reference -->
         <div class="side-image">
-            <img src="https://raw.githubusercontent.com/AStocking/WBLSOA/20f538672bc99910175af8264c0acd46e8a07b82/WBLSAO.png" 
-                 alt="WB LSOA Map Reference">
+            <img src="WBLSAO.png" alt="WB LSOA Map Reference">
         </div>
     </div>
 
@@ -75,19 +93,25 @@
     <script src="./resources/ol.js"></script>
     <script src="./resources/ol-layerswitcher.js"></script>
     <script src="resources/photon-geocoder-autocomplete.min.js"></script>
+
+    <!-- Layers and styles -->
     <script src="layers/WestBromwichBdgs_0.js"></script>
     <script src="layers/WestBromwichTown_1.js"></script>
     <script src="layers/WestBromwichRoads_2.js"></script>
     <script src="layers/WBLSAOMASTER_3.js"></script>
+
     <script src="styles/WestBromwichBdgs_0_style.js"></script>
     <script src="styles/WestBromwichTown_1_style.js"></script>
     <script src="styles/WestBromwichRoads_2_style.js"></script>
     <script src="styles/WBLSAOMASTER_3_style.js"></script>
+
     <script src="./layers/layers.js" type="text/javascript"></script> 
     <script src="./resources/Autolinker.min.js"></script>
     <script src="./resources/qgis2web.js"></script>
 </body>
 </html>
+
+
 
 
 
