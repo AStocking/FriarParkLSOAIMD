@@ -52,12 +52,13 @@
         #map {
             flex: 1;
             width: 100%;
+            min-height: 500px; /* ensures map is readable */
         }
 
         /* Side image panel — SCROLLING ENABLED */
         .side-image {
             flex: 1;
-            overflow: auto;          /* <-- THIS IS THE FIX */
+            overflow: auto;
             height: 100%;
             border: 1px solid #ccc;
             padding: 5px;
@@ -85,19 +86,18 @@
             right: 8px;
         }
 
-        /* Bottom centre credit image */
-        .bottom-credit {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
+        /* Bottom centre credit — Option 2 */
+        .bottom-credit-container {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
         }
 
-        .bottom-credit img {
-            max-width: 400px;
+        .bottom-credit-container img {
+            width: 70%;      /* large and readable */
+            max-width: 800px; /* prevents it from being too huge */
             height: auto;
-            opacity: 1;
+            display: inline-block;
         }
     </style>
 
@@ -127,8 +127,8 @@
 
     </div>
 
-    <!-- Bottom centre credit -->
-    <div class="bottom-credit">
+    <!-- Bottom centre credit — Option 2 -->
+    <div class="bottom-credit-container">
         <img src="UCREDIT.png" alt="Credit">
     </div>
 
@@ -158,6 +158,8 @@
 
 </body>
 </html>
+
+
 
 
 
