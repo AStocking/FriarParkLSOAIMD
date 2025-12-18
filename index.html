@@ -47,6 +47,16 @@
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* space between title and icon */
+        }
+
+        /* Info icon next to title */
+        #info-button {
+            font-size: 20px;
+            cursor: pointer;
+            color: #007bff;
         }
 
         #map {
@@ -86,27 +96,10 @@
             right: 8px;
         }
 
-        /* Info icon & popup */
-        #info-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #007bff;
-            color: white;
-            font-size: 24px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 2000;
-        }
-
+        /* Info popup */
         #info-popup {
             position: fixed;
-            top: 60px;
+            top: 80px;
             right: 20px;
             width: 400px;
             max-height: 80vh;
@@ -139,6 +132,11 @@
                 min-width: 100%;
                 height: 50vh;
             }
+            #info-popup {
+                width: 90%;
+                left: 5%;
+                right: 5%;
+            }
         }
     </style>
 
@@ -146,9 +144,6 @@
 </head>
 
 <body>
-
-    <!-- Info Icon Button -->
-    <div id="info-button" title="Click for LSOA 019B Details">ℹ️</div>
 
     <!-- Info Popup Container -->
     <div id="info-popup">
@@ -183,7 +178,10 @@
 
         <!-- Map + Title -->
         <div class="map-wrapper">
-            <div class="map-title">LSAO 19B - West Bromwich</div>
+            <div class="map-title">
+                LSAO 19B - West Bromwich
+                <span id="info-button" title="Click for LSOA 019B Details">ℹ️</span>
+            </div>
 
             <div id="map">
                 <div id="popup" class="ol-popup">
@@ -237,17 +235,11 @@
         infoClose.addEventListener('click', () => {
             infoPopup.style.display = 'none';
         });
-
-        // Optional: close popup by clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === infoPopup) {
-                infoPopup.style.display = 'none';
-            }
-        });
     </script>
 
 </body>
 </html>
+
 
 
 
